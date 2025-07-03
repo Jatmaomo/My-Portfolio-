@@ -1,218 +1,353 @@
-
-
-                  
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jat Maomo | software engineer</title>
+    <title>Jat Maomo | Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
         }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid #008751;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #008751; }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
         }
         
-        .rotate-3d {
-            animation: rotate3d 8s infinite alternate ease-in-out;
-            transform-style: preserve-3d;
+        .tech-icon:hover {
+            transform: scale(1.2);
         }
         
-        @keyframes rotate3d {
-            0% {
-                transform: rotateY(0deg) rotateX(0deg);
-            }
-            100% {
-                transform: rotateY(20deg) rotateX(10deg);
-            }
+        .game-card {
+            transition: all 0.3s ease;
         }
         
-        .hover-glow:hover {
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-            transition: filter 0.3s ease;
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="min-h-screen">
     <!-- Navigation -->
-    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                        <span class="text-purple-800 font-bold">JM</span>
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold gradient-text">JM</span>
                     </div>
-                    <span class="font-semibold text-xl">Jat Maomo</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="hover:text-purple-200 transition">About</a>
-                    <a href="#projects" class="hover:text-purple-200 transition">Projects</a>
-                    <a href="#skills" class="hover:text-purple-200 transition">Skills</a>
-                    <a href="#contact" class="hover:text-purple-200 transition">Contact</a>
-                    <a href="hire-me.html" class="hover:text-purple-200 transition">Hire Me</a>
-                    <a href="certifications.html" class="hover:text-purple-200 transition">Certifications</a>
-                    <a href="games.html" class="hover:text-purple-200 transition">Play Games</a>
-                    <a href="blog.html" class="hover:text-purple-200 transition">Blog</a>
-                    <a href="services.html" class="hover:text-purple-200 transition">Services</a>
-                    <a href="php-projects.html" class="hover:text-purple-200 transition">PHP Projects</a>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Skills</a>
+                    <a href="#games" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Games</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Contact</a>
                 </div>
-                <button class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Skills</a>
+                <a href="#games" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Games</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Musa Muhammed iyanuloluwa</h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 typewriter">Full Stack Developer & Game Creator</h2>
-                <p class="text-lg mb-8">Building Smart Apps, Games, & Learning Tools with Code and Passion</p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-100 transition">Get In Touch</a>
-                    <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">View Projects</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative">
-                    <div class="w-64 h-64 md:w-80 md:h-80 bg-green-100 rounded-full flex items-center justify-center overflow-hidden shadow-xl">
-                        <img src="https://i.postimg.cc/0jBSXWKd/20250606-091035.jpg" alt="Musa Muhammed Maomo" class="w-full h-full object-cover">
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <span class="gradient-text">Jat Maomo</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">Musa Muhammed Iyanuloluwa</h2>
+                    <h3 class="text-xl md:text-2xl font-medium text-gray-700 mb-6">Full Stack Developer & Game Creator</h3>
+                    <p class="text-gray-600 mb-8 max-w-lg">
+                        Building Smart Apps, Games, & Learning Tools with Code and Passion
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition duration-300">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition duration-300">
+                            View Projects
+                        </a>
                     </div>
-                    <div class="absolute -bottom-5 -right-5 bg-white text-purple-600 px-4 py-2 rounded-lg shadow-lg">
-                        <span class="font-bold">🇳🇬 Based in Nigeria</span>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="https://i.postimg.cc/0jBSXWKd/20250606-091035.jpg" alt="Musa Muhammed Maomo" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-white shadow-xl">
+                        <div class="absolute -bottom-4 -right-4 bg-white px-4 py-2 rounded-full shadow-md flex items-center">
+                            <span class="text-sm font-medium text-gray-700">🇳🇬 Based in Nigeria</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">🏆 My Certifications</h1>
+    <!-- Certifications Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">🏆 My Certifications</h2>
             
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Certification 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4">
-                            <i class="fas fa-code"></i>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-blue-100 p-3 rounded-lg">
+                                <i class="fas fa-laptop-code text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Web Development</h3>
+                                <p class="text-sm text-gray-500">Mindluster.com</p>
+                            </div>
                         </div>
-                        <h2 class="text-xl font-bold">Full Stack Development</h2>
+                        <p class="text-gray-600 mb-4">
+                            Completed comprehensive training in modern web development technologies including Next.js, Tailwind, and databases.
+                        </p>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Completed</span>
                     </div>
-                    <p class="text-gray-600 mb-2">i built an amazing Project</p>
-                    <p class="text-gray-600">Completed comprehensive training in modern web development technologies including next.js, tailwaind, and databases.</p>
                 </div>
                 
                 <!-- Certification 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4">
-                            <i class="fas fa-robot"></i>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-purple-100 p-3 rounded-lg">
+                                <i class="fas fa-robot text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Machine Learning</h3>
+                                <p class="text-sm text-gray-500">March 2023</p>
+                            </div>
                         </div>
-                        <h2 class="text-xl font-bold">AI & Machine Learning</h2>
+                        <p class="text-gray-600 mb-4">
+                            Fundamentals of machine learning and AI applications using TensorFlow and Python.
+                        </p>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Completed</span>
                     </div>
-                    <p class="text-gray-600 mb-2">prediction of co2 emission of a car - March 2023</p>
-                    <p class="text-gray-600">Fundamentals of machine learning and AI applications using TensorFlow and Python.</p>
                 </div>
                 
                 <!-- Certification 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4">
-                            <i class="fas fa-gamepad"></i>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="flex-shrink-0 bg-green-100 p-3 rounded-lg">
+                                <i class="fas fa-gamepad text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Game Development</h3>
+                                <p class="text-sm text-gray-500">Animation Mentor - March 2023</p>
+                            </div>
                         </div>
-                        <h2 class="text-xl font-bold">Game Development</h2>
+                        <p class="text-gray-600 mb-4">
+                            Professional certification in Struckd development and 3D modeling, 2D and 3D cartoon animation techniques.
+                        </p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Completed</span>
                     </div>
-                    <p class="text-gray-600 mb-2">i got a cerificate on mindluster.com </p>
-                    <p class="text-gray-600">Professional certification in struckd development and 3D modeling.</p>
                 </div>
-                
-                <!-- Certification 4 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-4">
-                            <i class="fas fa-film"></i>
-                        </div>
-                        <h2 class="text-xl font-bold">Cartoon Animation</h2>
-                    </div>
-                    <p class="text-gray-600 mb-2">Issued: Animation Mentor - March 2023</p>
-                    <p class="text-gray-600">Professional certification in 2D and 3D cartoon animation techniques.</p>
-                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 italic">
+                    "I built an amazing project - prediction of CO2 emission of a car"
+                </p>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">👋🏽 About Me</h2>
-            <div class="max-w-4xl mx-auto">
-                <p class="text-lg text-gray-600 mb-8">
-                    Hey! I'm Jat Maomo, a multi-talented and highly motivated developer with real experience across various domains of technology. I'm passionate about creating solutions that make an impact while sharing my knowledge with others.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-semibold text-purple-600 mb-4">My Expertise</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-globe text-purple-500 mt-1 mr-3"></i>
-                                <span>Web Development using HTML, CSS, JavaScript, Next.js, Tailwind CSS, and TypeScript</span>
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 gradient-text">👋🏽 About Me</h2>
+                    <p class="text-gray-600 mb-6">
+                        Hey! I'm Jat Maomo, a multi-talented and highly motivated developer with real experience across various domains of technology. 
+                        I'm passionate about creating solutions that make an impact while sharing my knowledge with others.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">My Expertise</h3>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span class="text-gray-700">Web Development</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-mobile-alt text-purple-500 mt-1 mr-3"></i>
-                                <span>App Development with Firebase, mobile-first responsive design, and modern frameworks</span>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span class="text-gray-700">App Development</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-gamepad text-purple-500 mt-1 mr-3"></i>
-                                <span>Game Development using Struckd, Unity, and ROSBuild</span>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span class="text-gray-700">Game Development</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chalkboard-teacher text-purple-500 mt-1 mr-3"></i>
-                                <span>Teaching – I mentor beginners and students in tech</span>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span class="text-gray-700">Teaching & Mentoring</span>
                             </li>
                         </ul>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-semibold text-purple-600 mb-4">More Skills</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-robot text-purple-500 mt-1 mr-3"></i>
-                                <span>Machine Learning using Python and AI integrations</span>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">More Skills</h3>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-brain text-purple-500 mr-2"></i>
+                                <span class="text-gray-700">Machine Learning</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-film text-purple-500 mt-1 mr-3"></i>
-                                <span>Cartoon Animation – for storytelling and learning</span>
+                            <li class="flex items-center">
+                                <i class="fas fa-film text-purple-500 mr-2"></i>
+                                <span class="text-gray-700">Cartoon Animation</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-keyboard text-purple-500 mt-1 mr-3"></i>
-                                <span>Prompt Engineering – I build AI-based tools for content, quotes, games, and learning apps</span>
+                            <li class="flex items-center">
+                                <i class="fas fa-robot text-purple-500 mr-2"></i>
+                                <span class="text-gray-700">Prompt Engineering</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-lightbulb text-purple-500 mr-2"></i>
+                                <span class="text-gray-700">AI Content Creation</span>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-md">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">🌟 My Motto</h3>
+                        <blockquote class="border-l-4 border-blue-500 pl-4 italic text-gray-700">
+                            "Patience is the key. Trust in the process and let your heart code the answer."
+                        </blockquote>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Client Testimonials</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Testimonial 1 -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <span class="text-blue-600 font-bold">MJ</span>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-900">May Jegas</h4>
+                                    <p class="text-sm text-gray-500 mb-2">CEO, Dexterity</p>
+                                    <p class="text-gray-600">
+                                        "Jat delivered our platform ahead of schedule with excellent quality. Highly recommended!"
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 2 -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <span class="text-purple-600 font-bold">BM</span>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-900">Boffin Maokad</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Engimedics Tech</p>
+                                    <p class="text-gray-600">
+                                        "Jat is doing great!"
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 3 -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
+                                        <span class="text-green-600 font-bold">GM</span>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-medium text-gray-900">Gregor</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Farmer</p>
+                                    <p class="text-gray-600">
+                                        "Jat's game development skills are top-notch. He implemented complex mechanics with ease."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -220,966 +355,479 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">🔗 Featured Projects</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Here are some of the projects I've proudly built that showcase my diverse skills</p>
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">🔗 Featured Projects</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                Here are some of the projects I've proudly built that showcase my diverse skills
+            </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://titab-store.vercel.app" target="_blank">
-                        <div class="h-48 bg-purple-100 flex items-center justify-center">
-                            <i class="fas fa-shopping-cart text-6xl text-purple-600"></i>
-                        </div>
-                    </a>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                        <i class="fas fa-project-diagram text-white text-6xl"></i>
+                    </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Titab Store</h3>
-                        <p class="text-gray-600 mb-4">E-commerce Platform with modern features and responsive design.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">Firebase</span>
-                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">Tailwind</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">CO2 Emission Predictor</h3>
+                        <p class="text-gray-600 mb-4">
+                            A machine learning model that predicts CO2 emissions from cars based on various parameters.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Python</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">ML</span>
                         </div>
-                        <a href="https://titab-store.vercel.app" target="_blank" class="mt-4 inline-block text-purple-600 hover:text-purple-800 font-medium">Visit Site →</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://iqra-arabic.vercel.app" target="_blank">
-                        <div class="h-48 bg-blue-100 flex items-center justify-center">
-                            <i class="fas fa-language text-6xl text-blue-600"></i>
-                        </div>
-                    </a>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-white text-6xl"></i>
+                    </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Iqra Arabic</h3>
-                        <p class="text-gray-600 mb-4">Arabic Learning Web App with interactive lessons and quizzes.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Next.js</span>
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">TypeScript</span>
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">AI Integration</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">3D Adventure Game</h3>
+                        <p class="text-gray-600 mb-4">
+                            An immersive 3D game built with Unity featuring complex mechanics and stunning visuals.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Unity</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">3D Modeling</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">C#</span>
                         </div>
-                        <a href="https://iqra-arabic.vercel.app" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium">Visit Site →</a>
+                        <a href="#" class="text-purple-600 hover:text-purple-800 font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <div class="h-48 bg-green-100 flex items-center justify-center">
-                        <i class="fas fa-gamepad text-6xl text-green-600"></i>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">8Ball & Snooker Game</h3>
-                        <p class="text-gray-600 mb-4">8Ball & Snooker-Style Game Clone with realistic physics.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Unity</span>
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">C#</span>
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">3D Modeling</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Learning Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            A modern web application for interactive learning built with Next.js and Tailwind CSS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Next.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Tailwind</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-full">Firebase</span>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
-                        <i class="fas fa-brain text-6xl text-yellow-600"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Godliness Montessori CBT App</h3>
-                        <p class="text-gray-600 mb-4">Basic Science & Tech quiz app for JSS3 students.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">React Native</span>
-                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Firebase</span>
-                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Education</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <div class="h-48 bg-red-100 flex items-center justify-center">
-                        <i class="fas fa-heart text-6xl text-red-600"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Love Quote Generator</h3>
-                        <p class="text-gray-600 mb-4">AI-powered tool that generates motivational quotes and love messages.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">AI</span>
-                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">Content</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://jatmaomo.github.io/tools1/" target="_blank">
-                        <div class="h-48 bg-indigo-100 flex items-center justify-center">
-                            <i class="fas fa-tools text-6xl text-indigo-600"></i>
-                        </div>
-                    </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Developer Tools Collection</h3>
-                        <p class="text-gray-600 mb-4">A suite of utilities and tools to help developers in their workflow.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                            <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
-                            <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Productivity</span>
-                        </div>
-                        <a href="https://jatmaomo.github.io/tools1/" target="_blank" class="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium">Visit Site →</a>
-                    </div>
-                </div>
-                <!-- Project 7 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://sabuss.com/jatmaomotechdatasub5" target="_blank">
-                        <div class="h-48 bg-green-100 flex items-center justify-center">
-                            <i class="fas fa-database text-6xl text-green-600"></i>
-                        </div>
-                    </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">vtu website</h3>
-                        <p class="text-gray-600 mb-4">instant top up platform .</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Web Forms</span>
-                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Data Processing</span>
-                        </div>
-                        <a href="https://sabuss.com/jatmaomotechdatasub5" target="_blank" class="mt-4 inline-block text-green-600 hover:text-green-800 font-medium">Visit Site →</a>
-                    </div>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="bit.ly/Mayjegas" target="_blank">
-                        <div class="h-48 bg-blue-100 flex items-center justify-center">
-                            <i class="fas fa-globe text-6xl text-blue-600"></i>
-                        </div>
-                    </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Dexterity Services</h3>
-                        <p class="text-gray-600 mb-4">Professional services website with modern design.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Web Design</span>
-                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Vercel</span>
-                        </div>
-                        <a href="https://v0-dexterity-services-website-kut0oj5cs-jatmaomos-projects.vercel.app" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium">Visit Site →</a>
-                    </div>
-                </div>
-
-                <!-- Project 9 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover transition duration-300">
-                    <a href="https://rosebud.ai/p/c88c81c0-effd-4d38-8a30-fb0281cc9e9d" target="_blank">
-                        <div class="h-48 bg-pink-100 flex items-center justify-center">
-                            <img src="https://i.postimg.cc/k5TgyVbW/test.jpg" alt="Rosebud AI Project" class="w-full h-full object-cover transform hover:scale-110 transition duration-500">
-                        </div>
-                    </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Rosebud AI Project</h3>
-                        <p class="text-gray-600 mb-4">AI-powered creative project with animated 3D elements.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm">AI</span>
-                            <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm">3D Animation</span>
-                        </div>
-                        <a href="https://rosebud.ai/p/c88c81c0-effd-4d38-8a30-fb0281cc9e9d" target="_blank" class="mt-4 inline-block text-pink-600 hover:text-pink-800 font-medium">Visit Site →</a>
+                        <a href="#" class="text-green-600 hover:text-green-800 font-medium inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="https://github.com/jatmaomo" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white gradient-bg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                    <i class="fab fa-github mr-2"></i> View More on GitHub
+            <div class="mt-12 text-center">
+                <a href="#" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition duration-300 inline-flex items-center">
+                    View All Projects <i class="fas fa-chevron-right ml-2"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">🛠️ Tools & Technologies I Use</h2>
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">🛠️ Tools & Technologies I Use</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Category 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Frontend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">HTML</span>
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">CSS</span>
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">TypeScript</span>
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-                    </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Web Development -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-html5 text-orange-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">HTML5</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-css3-alt text-blue-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">CSS3</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-js-square text-yellow-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">JavaScript</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-react text-blue-400 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">React</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fas fa-bolt text-black text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">Next.js</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-node-js text-green-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">Node.js</h3>
                 </div>
                 
-                <!-- Category 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Frameworks</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Next.js</span>
-                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">React</span>
-                    </div>
+                <!-- Game Development -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-unity text-gray-800 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">Unity</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fas fa-gamepad text-purple-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">Struckd</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fas fa-cube text-blue-600 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">ROSBuild</h3>
                 </div>
                 
-                <!-- Category 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Backend/Database</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Firebase</span>
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Node.js</span>
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">PHP</span>
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">MySQL</span>
-                    </div>
+                <!-- AI/ML -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fab fa-python text-blue-700 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">Python</h3>
                 </div>
-                
-                <!-- Category 4 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Game Development</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Struckd</span>
-                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Unity</span>
-                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">ROSBuild</span>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fas fa-brain text-orange-500 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">TensorFlow</h3>
                 </div>
-                
-                <!-- Category 5 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">AI/ML & Automation</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">Python</span>
-                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">TensorFlow</span>
-                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">Prompt Engineering</span>
-                    </div>
-                </div>
-                
-                <!-- Category 6 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Other Skills</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Teaching</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Cartoon Animation</span>
-                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">AI Content</span>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center tech-icon">
+                    <i class="fas fa-robot text-purple-600 text-4xl mb-3"></i>
+                    <h3 class="font-medium text-gray-800">AI Tools</h3>
                 </div>
             </div>
         </div>
     </section>
-   <!-- Game Portal Section -->
-<section id="games">
-  <div class="container">
-    <h2>🎮  Play & Win Zone</h2>
-    <p>Enjoy these fun mini-games I've created. Challenge yourself and have fun!</p>
 
-    <div class="game-grid">
-
-      <!-- Tic Tac Toe -->
-      <section class="game" id="tic-tac-toe">
-        <h3>Tic Tac Toe</h3>
-        <div class="board" id="board">
-          <div class="cell" data-index="0"></div>
-          <div class="cell" data-index="1"></div>
-          <div class="cell" data-index="2"></div>
-          <div class="cell" data-index="3"></div>
-          <div class="cell" data-index="4"></div>
-          <div class="cell" data-index="5"></div>
-          <div class="cell" data-index="6"></div>
-          <div class="cell" data-index="7"></div>
-          <div class="cell" data-index="8"></div>
-        </div>
-        <button onclick="resetGame()">Reset</button>
-        <p id="status"></p>
-      </section>
-
-      <!-- Rock Paper Scissors -->
-      <section class="game" id="rps">
-        <h3>Rock Paper Scissors</h3>
-        <div class="rps-buttons">
-          <button onclick="playRPS('rock')">🪨 Rock</button>
-          <button onclick="playRPS('paper')">📄 Paper</button>
-          <button onclick="playRPS('scissors')">✂️ Scissors</button>
-        </div>
-        <p id="rps-result"></p>
-      </section>
-
-      <!-- Number Guessing Game -->
-      <section class="game" id="guessing-game">
-        <h3>Number Guessing Game</h3>
-        <p>Guess a number between 1 and 20</p>
-        <input type="number" id="guessInput" min="1" max="20" />
-        <button onclick="checkGuess()">Guess</button>
-        <p id="guessMessage"></p>
-      </section>
-
-      <!-- Color Match Challenge -->
-      <section class="game" id="color-match">
-        <h3>Color Match Challenge</h3>
-        <div id="colorBox"></div>
-        <input type="text" id="colorInput" placeholder="Enter color name" />
-        <button onclick="checkColor()">Match</button>
-        <p id="colorResult"></p>
-      </section>
-
-      <!-- Quick Math Quiz -->
-      <section class="game" id="math-quiz">
-        <h3>Quick Math Quiz</h3>
-        <p id="mathQuestion"></p>
-        <input type="number" id="mathAnswer" />
-        <button onclick="checkMath()">Submit</button>
-        <p id="mathFeedback"></p>
-      </section>
-
-    </div>
-  </div>
-</section>
- 
-    
-  <style>
- 
-  .board {
-    display: grid;
-    grid-template-columns: repeat(3, 80px);
-    gap: 5px;
-    justify-content: center;
-    margin: 1rem auto;
-  }
-  .cell {
-    width: 80px;
-    height: 80px;
-    background: #fff;
-    border: 2px solid #ccc;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  .game button, .game input {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-  }
-  /* Rock Paper Scissors */
-#rps .rps-buttons button {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-#rps .rps-buttons button:hover {
-  background-color: #1b5e20;
-}
-#rps p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Number Guessing Game */
-#guessing-game input[type="number"] {
-  padding: 8px;
-  width: 100px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-#guessing-game button {
-  padding: 8px 15px;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#guessing-game button:hover {
-  background-color: #0d47a1;
-}
-#guessing-game p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Color Match Challenge */
-#colorBox {
-  width: 100px;
-  height: 100px;
-  margin: 10px auto;
-  border: 2px solid #444;
-  border-radius: 8px;
-}
-#color-match input {
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-}
-#color-match button {
-  padding: 8px 15px;
-  margin-left: 10px;
-  background-color: #d32f2f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#color-match button:hover {
-  background-color: #b71c1c;
-}
-#color-match p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Quick Math Quiz */
-#math-quiz input {
-  padding: 8px;
-  width: 80px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-#math-quiz button {
-  padding: 8px 15px;
-  background-color: #f9a825;
-  color: black;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#math-quiz button:hover {
-  background-color: #f57f17;
-}
-#math-quiz p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-</style>
-
-<script>
-// TIC TAC TOE
-let currentPlayer = 'X';
-let board = ['', '', '', '', '', '', '', '', ''];
-const cells = document.querySelectorAll('.cell');
-const status = document.getElementById('status');
-
-cells.forEach(cell => {
-  cell.addEventListener('click', () => {
-    const index = cell.dataset.index;
-    if (!board[index]) {
-      board[index] = currentPlayer;
-      cell.textContent = currentPlayer;
-      if (checkWinner()) {
-        status.textContent = `${currentPlayer} wins!`;
-      } else if (board.every(cell => cell)) {
-        status.textContent = `It's a draw!`;
-      } else {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-      }
-    }
-  });
-});
-
-function checkWinner() {
-  const winCombos = [
-    [0,1,2], [3,4,5], [6,7,8],
-    [0,3,6], [1,4,7], [2,5,8],
-    [0,4,8], [2,4,6]
-  ];
-  return winCombos.some(combo =>
-    combo.every(i => board[i] === currentPlayer)
-  );
-}
-
-function resetGame() {
-  board = ['', '', '', '', '', '', '', '', ''];
-  cells.forEach(cell => cell.textContent = '');
-  currentPlayer = 'X';
-  status.textContent = '';
-}
-
-// ROCK PAPER SCISSORS
-function playRPS(playerChoice) {
-  const choices = ['rock', 'paper', 'scissors'];
-  const computer = choices[Math.floor(Math.random() * 3)];
-  let result = '';
-  if (playerChoice === computer) result = "It's a draw!";
-  else if (
-    (playerChoice === 'rock' && computer === 'scissors') ||
-    (playerChoice === 'paper' && computer === 'rock') ||
-    (playerChoice === 'scissors' && computer === 'paper')
-  ) result = `You win! Computer chose ${computer}.`;
-  else result = `You lose! Computer chose ${computer}.`;
-  document.getElementById('rps-result').textContent = result;
-}
-
-// NUMBER GUESSING
-let secretNumber = Math.floor(Math.random() * 20) + 1;
-function checkGuess() {
-  const guess = parseInt(document.getElementById('guessInput').value);
-  const message = document.getElementById('guessMessage');
-  if (guess === secretNumber) {
-    message.textContent = "🎉 Correct! You guessed the number!";
-  } else if (guess < secretNumber) {
-    message.textContent = "📉 Too low. Try again!";
-  } else {
-    message.textContent = "📈 Too high. Try again!";
-  }
-}
-
-// COLOR MATCH
-const colors = ['red', 'green', 'blue', 'yellow', 'purple'];
-let currentColor = colors[Math.floor(Math.random() * colors.length)];
-document.getElementById('colorBox').style.backgroundColor = currentColor;
-
-function checkColor() {
-  const input = document.getElementById('colorInput').value.toLowerCase();
-  const result = document.getElementById('colorResult');
-  if (input === currentColor) {
-    result.textContent = "✅ Correct!";
-  } else {
-    result.textContent = `❌ Nope! The color was "${currentColor}".`;
-  }
-  currentColor = colors[Math.floor(Math.random() * colors.length)];
-  document.getElementById('colorBox').style.backgroundColor = currentColor;
-}
-
-// QUICK MATH QUIZ
-let num1 = Math.floor(Math.random() * 10) + 1;
-let num2 = Math.floor(Math.random() * 10) + 1;
-let operator = ['+', '-', '*'][Math.floor(Math.random() * 3)];
-let correctAnswer;
-
-function generateMath() {
-  if (operator === '+') correctAnswer = num1 + num2;
-  else if (operator === '-') correctAnswer = num1 - num2;
-  else correctAnswer = num1 * num2;
-  document.getElementById('mathQuestion').textContent = `What is ${num1} ${operator} ${num2}?`;
-}
-generateMath();
-
-function checkMath() {
-  const userAnswer = parseInt(document.getElementById('mathAnswer').value);
-  const feedback = document.getElementById('mathFeedback');
-  if (userAnswer === correctAnswer) {
-    feedback.textContent = "🎉 Correct!";
-  } else {
-    feedback.textContent = `❌ Incorrect! Answer was ${correctAnswer}.`;
-  }
-  num1 = Math.floor(Math.random() * 10) + 1;
-  num2 = Math.floor(Math.random() * 10) + 1;
-  operator = ['+', '-', '*'][Math.floor(Math.random() * 3)];
-  generateMath();
-}
-</script>
-
-
-  
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 gradient-bg text-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">📲 Connect With Me</h2>
-            <p class="text-center text-purple-100 mb-12 max-w-2xl mx-auto">Let's collaborate on your next project or discuss tech opportunities</p>
+    <!-- Games Section -->
+    <section id="games" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">🎮 Play & Win Zone</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                Enjoy these fun mini-games I've created. Challenge yourself and have fun!
+            </p>
             
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
-                    <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Phone/WhatsApp</h4>
-                                <a href="tel:+2349154683048" class="text-purple-100 hover:text-white">+234 915 468 3048</a>
-                            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Game 1 -->
+                <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-6 shadow-md game-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-times text-4xl text-blue-600 mb-2"></i>
+                        <i class="fas fa-circle-notch text-4xl text-purple-600 mb-2"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center text-gray-800 mb-3">Tic Tac Toe</h3>
+                    <p class="text-gray-600 text-center mb-4">Classic X and O game with AI opponent</p>
+                    <button class="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:shadow-md transition duration-300">
+                        Play Now
+                    </button>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl p-6 shadow-md game-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-hand-rock text-4xl text-gray-600 mb-2"></i>
+                        <i class="fas fa-hand-paper text-4xl text-white mb-2"></i>
+                        <i class="fas fa-hand-scissors text-4xl text-red-500 mb-2"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center text-gray-800 mb-3">Rock Paper Scissors</h3>
+                    <p class="text-gray-600 text-center mb-4">Test your luck against the computer</p>
+                    <button class="w-full py-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg font-medium hover:shadow-md transition duration-300">
+                        Play Now
+                    </button>
+                </div>
+                
+                <!-- Game 3 -->
+                <div class="bg-gradient-to-br from-green-100 to-blue-100 rounded-xl p-6 shadow-md game-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-question-circle text-4xl text-green-600 mb-2"></i>
+                        <i class="fas fa-dice text-4xl text-blue-600 mb-2"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center text-gray-800 mb-3">Number Guessing</h3>
+                    <p class="text-gray-600 text-center mb-4">Guess a number between 1 and 20</p>
+                    <button class="w-full py-2 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg font-medium hover:shadow-md transition duration-300">
+                        Play Now
+                    </button>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="bg-gradient-to-br from-yellow-100 to-red-100 rounded-xl p-6 shadow-md game-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-palette text-4xl text-yellow-600 mb-2"></i>
+                        <i class="fas fa-fill-drip text-4xl text-red-600 mb-2"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center text-gray-800 mb-3">Color Match</h3>
+                    <p class="text-gray-600 text-center mb-4">Test your reaction time and color recognition</p>
+                    <button class="w-full py-2 bg-gradient-to-r from-yellow-500 to-red-600 text-white rounded-lg font-medium hover:shadow-md transition duration-300">
+                        Play Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">📝 Tech Blog</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
+                        <i class="fab fa-react text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>June 15, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>Web Development</span>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">GitHub</h4>
-                                <a href="https://github.com/jatmaomo" target="_blank" class="text-purple-100 hover:text-white">github.com/jatmaomo</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fab fa-tiktok"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">TikTok</h4>
-                                <a href="https://tiktok.com/@jatmaomotech" target="_blank" class="text-purple-100 hover:text-white">@jatmaomotech</a>
-                            </div>
-                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Getting Started with Next.js</h3>
+                        <p class="text-gray-600 mb-4">
+                            Next.js has become my go-to framework for building modern web applications. In this post, I'll share my journey learning Next.js and some tips for beginners...
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
-                    <h3 class="text-xl font-semibold mb-6">Contact Form</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label for="name" class="block mb-1">Name</label>
-                            <input type="text" id="name" class="w-full bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-2 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white">
+                <!-- Blog 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>May 28, 2025</span>
+                            <span class="mx-2">•</span>
+                            <span>Artificial Intelligence</span>
                         </div>
-                        <div>
-                            <label for="email" class="block mb-1">Email</label>
-                            <input type="email" id="email" class="w-full bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-2 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">The Future of AI in Education</h3>
+                        <p class="text-gray-600 mb-4">
+                            AI is transforming how we learn and teach. From personalized learning paths to automated grading, the possibilities are endless. Here's my perspective...
+                        </p>
+                        <a href="#" class="text-purple-600 hover:text-purple-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span>April 10, 2025</span>
+                            <span class="mx-2">•</span>
+                            <span>Game Development</span>
                         </div>
-                        <div>
-                            <label for="message" class="block mb-1">Message</label>
-                            <textarea id="message" rows="4" class="w-full bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg px-4 py-2 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Game Development with Unity</h3>
+                        <p class="text-gray-600 mb-4">
+                            Creating my first 3D game was both challenging and rewarding. In this post, I'll walk through the process of building a simple game in Unity from scratch...
+                        </p>
+                        <a href="#" class="text-green-600 hover:text-green-800 font-medium inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition duration-300 inline-flex items-center">
+                    View All Articles <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12 gradient-text">📲 Connect With Me</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                Let's collaborate on your next project or discuss tech opportunities
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <form class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
-                        <button type="submit" class="w-full bg-white text-purple-800 font-semibold py-2 px-4 rounded-lg hover:bg-purple-100 transition duration-300">Send Message</button>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition duration-300">
+                            Send Message
+                        </button>
                     </form>
                 </div>
                 
-                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
-                    <h3 class="text-xl font-semibold mb-6">More Social Links</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fab fa-facebook-f"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Facebook</h4>
-                                <a href="https://facebook.com/musamuhammedmaomo" target="_blank" class="text-purple-100 hover:text-white">Musa Muhammed Maomo</a>
-                            </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">More Social Links</h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-medium text-gray-700 mb-4">Username</h4>
+                            <p class="text-gray-600 mb-2">@jatmaomo (Across platforms)</p>
                         </div>
                         
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Instagram</h4>
-                                <a href="https://instagram.com/naomo247" target="_blank" class="text-purple-100 hover:text-white">@naomo247</a>
-                            </div>
+                        <div class="space-y-4">
+                            <a href="#" class="flex items-center text-gray-700 hover:text-blue-600">
+                                <i class="fab fa-github text-2xl mr-4"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="#" class="flex items-center text-gray-700 hover:text-blue-400">
+                                <i class="fab fa-twitter text-2xl mr-4"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="flex items-center text-gray-700 hover:text-blue-700">
+                                <i class="fab fa-linkedin text-2xl mr-4"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="flex items-center text-gray-700 hover:text-red-500">
+                                <i class="fab fa-youtube text-2xl mr-4"></i>
+                                <span>YouTube</span>
+                            </a>
+                            <a href="#" class="flex items-center text-gray-700 hover:text-purple-600">
+                                <i class="fab fa-instagram text-2xl mr-4"></i>
+                                <span>Instagram</span>
+                            </a>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
-                                <i class="fas fa-at"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Username</h4>
-                                <p class="text-purple-100">@jatmaomo (Across platforms)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="max-w-2xl mx-auto mt-12 bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
-                <h3 class="text-xl font-semibold mb-6 text-center">💬 My Motto</h3>
-                <blockquote class="text-center text-2xl italic">
-                    "patient is the key trust in the process and let your heart code the answer."
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">🌟 Client Testimonials</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">
-                            mj
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">may jegas</h3>
-                            <p class="text-gray-500 text-sm">CEO, dexterity</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"Jat delivered our  platform ahead of schedule with excellent quality. Highly recommended!"</p>
-                    <div class="flex mt-4 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
-                            bm
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">boffin maokad</h3>
-                            <p class="text-gray-500 text-sm">engimedics tech</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"jat is doing great!"</p>
-                    <div class="flex mt-4 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold mr-4">
-                          gm
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">gregor </h3>
-                            <p class="text-gray-500 text-sm"> farmer</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"Jat's game development skills are top-notch. He implemented complex mechanics with ease."</p>
-                    <div class="flex mt-4 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <section id="blog" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">📝 Tech Blog</h1>
-            
-            <div class="max-w-4xl mx-auto space-y-12">
-                <!-- Blog Post 1 -->
-                <article class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Getting Started with next.js </h2>
-                    <p class="text-gray-500 mb-2">Published: June 15, 2024 | Category: Web Development</p>
-                    <p class="text-gray-600 mb-4">next.js has become my go-to framework for building modern web applications. In this post, I'll share my journey learning Next.js and some tips for beginners...</p>
-                    <a href="#" class="text-purple-600 hover:text-purple-800 font-medium">Read More →</a>
-                </article>
-                
-                <!-- Blog Post 2 -->
-                <article class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">The Future of AI in Education</h2>
-                    <p class="text-gray-500 mb-2">Published: May 28, 2025 | Category: Artificial Intelligence</p>
-                    <p class="text-gray-600 mb-4">AI is transforming how we learn and teach. From personalized learning paths to automated grading, the possibilities are endless. Here's my perspective...</p>
-                    <a href="#" class="text-purple-600 hover:text-purple-800 font-medium">Read More →</a>
-                </article>
-                
-                <!-- Blog Post 3 -->
-                <article class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Game Development with Unity</h2>
-                    <p class="text-gray-500 mb-2">Published: April 10, 2025 | Category: Game Development</p>
-                    <p class="text-gray-600 mb-4">Creating my first 3D game was both challenging and rewarding. In this post, I'll walk through the process of building a simple game in Unity from scratch...</p>
-                    <a href="#" class="text-purple-600 hover:text-purple-800 font-medium">Read More →</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-      
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-6">
+    <footer class="py-8 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <div class="flex items-center">
-                        <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-white mr-2">
-                            <span class="font-bold text-sm">JM</span>
-                        </div>
-                        <span class="font-semibold">Jat Maomo</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mt-2">© 2025 All rights reserved</p>
+                    <span class="text-xl font-bold gradient-text">Jat Maomo</span>
+                    <p class="text-gray-400 mt-1">Full Stack Developer & Game Creator</p>
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="https://github.com/jatmaomo" target="_blank" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white">
                         <i class="fab fa-github text-xl"></i>
                     </a>
-                    <a href="https://tiktok.com/@jatmaomotech" target="_blank" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-tiktok text-xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
                     </a>
-                    <a href="https://facebook.com/musamuhammedmaomo" target="_blank" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-facebook-f text-xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin text-xl"></i>
                     </a>
-                    <a href="https://instagram.com/naomo247" target="_blank" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
                 </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Jat Maomo. All rights reserved.</p>
+                <p class="mt-2">"Patient is the key. Trust in the process and let your heart code the answer."</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Game Portal JavaScript
-        // Tic Tac Toe Logic
-        let currentPlayer = 'X';
-        let board = ['', '', '', '', '', '', '', '', ''];
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        const cells = document.querySelectorAll('.cell');
-        const status = document.getElementById('status');
-        
-        cells.forEach(cell => {
-            cell.addEventListener('click', () => {
-                const index = cell.dataset.index;
-                if (!board[index]) {
-                    board[index] = currentPlayer;
-                    cell.textContent = currentPlayer;
-                    if (checkWinner()) {
-                        status.textContent = `${currentPlayer} wins!`;
-                    } else if (board.every(cell => cell)) {
-                        status.textContent = `It's a draw!`;
-                    } else {
-                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    }
-                }
-            });
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
         
-        function checkWinner() {
-            const winCombos = [
-                [0,1,2], [3,4,5], [6,7,8],
-                [0,3,6], [1,4,7], [2,5,8],
-                [0,4,8], [2,4,6]
-            ];
-            return winCombos.some(combo =>
-                combo.every(i => board[i] === currentPlayer)
-            );
-        }
-        
-        function resetGame() {
-            board = ['', '', '', '', '', '', '', '', ''];
-            cells.forEach(cell => cell.textContent = '');
-            currentPlayer = 'X';
-            status.textContent = '';
-        }
-        
-        // Rock Paper Scissors
-        function playRPS(playerChoice) {
-            const choices = ['rock', 'paper', 'scissors'];
-            const computer = choices[Math.floor(Math.random() * 3)];
-            let result = '';
-            
-            if (playerChoice === computer) {
-                result = "It's a draw!";
-            } else if (
-                (playerChoice === 'rock' && computer === 'scissors') ||
-                (playerChoice === 'paper' && computer === 'rock') ||
-                (playerChoice === 'scissors' && computer === 'paper')
-            ) {
-                result = `You win! Computer chose ${computer}.`;
-            } else {
-                result = `You lose! Computer chose ${computer}.`;
-            }
-            
-            document.getElementById('rps-result').textContent = result;
-        }
-        
-      <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const mobileMenuButton = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  mobileMenuButton.addEventListener('click', function () {
-    mobileMenu.classList.toggle('hidden');
-  });
-});
-</script>
-
-      
-      <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
- // Simple JavaScript for mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.querySelector('button.md\\:hidden');
-            const mobileMenu = document.querySelector('.md\\:flex.space-x-8');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'right-6', 'bg-purple-700', 'p-4', 'rounded-lg', 'space-y-4', 'space-x-0', 'z-50');
-                } else {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'right-6', 'bg-purple-700', 'p-4', 'rounded-lg', 'space-y-4', 'space-x-0', 'z-50');
-                }
-            });
-
-      
-      
-      
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                     
                     // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'right-6', 'bg-purple-700', 'p-4', 'rounded-lg', 'space-y-4', 'space-x-0', 'z-50');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Simple game functionality for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            // Number Guessing Game
+            const numberToGuess = Math.floor(Math.random() * 20) + 1;
+            let attempts = 0;
+            
+            document.querySelectorAll('.game-card button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const gameTitle = this.closest('.game-card').querySelector('h3').textContent;
+                    
+                    if (gameTitle === 'Number Guessing') {
+                        const userGuess = prompt('Guess a number between 1 and 20:');
+                        
+                        if (userGuess === null) return;
+                        
+                        attempts++;
+                        
+                        const guess = parseInt(userGuess);
+                        
+                        if (isNaN(guess)) {
+                            alert('Please enter a valid number!');
+                        } else if (guess < 1 || guess > 20) {
+                            alert('Please enter a number between 1 and 20!');
+                        } else if (guess < numberToGuess) {
+                            alert('Too low! Try again.');
+                        } else if (guess > numberToGuess) {
+                            alert('Too high! Try again.');
+                        } else {
+                            alert(`Congratulations! You guessed the number ${numberToGuess} in ${attempts} attempts.`);
+                        }
+                    } else {
+                        alert(`${gameTitle} game is coming soon! This is just a demo.`);
                     }
                 });
             });
         });
     </script>
 </body>
-</html>
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<script type="module">
-	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-	createChat({
-		webhookUrl: 'https://jatmaomo.app.n8n.cloud/webhook/79f96911-44d9-47e6-b48d-112afdec6345/chat'
-	});
-</script>
+		</html>
